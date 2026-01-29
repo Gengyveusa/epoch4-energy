@@ -857,16 +857,6 @@
     }
     
     /* Figure Styles */
-    @keyframes floatAnimation {
-      0%,
-      100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-
     .section-figure {
       margin: var(--space-xl) 0 var(--space-lg);
       text-align: center;
@@ -875,23 +865,8 @@
     .section-figure img,
     .section-figure svg {
       box-shadow: var(--shadow-lg);
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-      animation: floatAnimation 3s ease-in-out infinite;
-    }
-    
-    .section-figure img:hover,
-    .section-figure svg:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.15);
-    }
-
-    .section-figure.animated img,
-    .section-figure.animated svg {
-      will-change: transform;
-    }
-
-    .figure-animate {
-      animation: floatAnimation 3s ease-in-out infinite;
+      transition: box-shadow var(--transition-speed);
+      will-change: transform, box-shadow;
     }
     
     .figure-caption {
@@ -1011,6 +986,7 @@
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
   <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
@@ -1132,10 +1108,7 @@
         <strong>TL;DR:</strong> At cosmic scales, the universe's energy budget is dominated by dark energy and dark matter, with ordinary matter a small fraction. The section explains why global energy conservation is subtle in expanding spacetime, yet local conservation still holds. This perspective sets a baseline: energy is tied to geometry and evolution, informing how we interpret physical reality at every scale.
       </div>
       <figure class="section-figure" id="figure-cosmic">
-        <video class="figure-img" autoplay loop muted playsinline preload="auto" poster="cosmic-budget.png" aria-label="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
-          <source src="animations/cosmic-budget.mp4" type="video/mp4" />
-          <img src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
-        </video>
+        <img class="figure-img" src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 1: The cosmic energy budget — 68% dark energy, 27% dark matter, 5% ordinary matter</figcaption>
       </figure>
 
@@ -1174,10 +1147,7 @@
         <strong>TL;DR:</strong> Classical mechanics defines energy as kinetic and potential forms linked by work. This section summarizes the work-energy theorem and the First Law of Thermodynamics, showing that energy changes via heat and work but is never created or destroyed. It connects these principles to metabolism, emphasizing that biological work and heat production are classical energy transformations.
       </div>
       <figure class="section-figure" id="figure-pendulum">
-        <video class="figure-img" autoplay loop muted playsinline preload="auto" poster="classical-energy.png" aria-label="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
-          <source src="animations/pendulum.mp4" type="video/mp4" />
-          <img src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
-        </video>
+        <img class="figure-img" src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 2: Classical energy transformation — kinetic and potential energy exchange in a pendulum</figcaption>
       </figure>
 
@@ -1275,10 +1245,7 @@
         <strong>TL;DR:</strong> Bioenergetics describes how cells convert food into ATP, gradients, and work. This section reviews glycolysis, the TCA cycle, and oxidative phosphorylation, highlighting how electron transport builds a proton gradient that drives ATP synthase. It stresses that metabolism is an integrated energy landscape, so dysfunction in mitochondria or fuel use propagates system-wide effects in health and disease.
       </div>
       <figure class="section-figure" id="figure-mitochondria">
-        <video class="figure-img" autoplay loop muted playsinline preload="auto" poster="mitochondria.png" aria-label="Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi." style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
-          <source src="animations/mitochondria.mp4" type="video/mp4" />
-          <img src="mitochondria.png" loading="lazy" alt="Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi." style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
-        </video>
+        <img class="figure-img" src="mitochondria.png" loading="lazy" alt="Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi." style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 4: Mitochondrial ATP synthesis — the powerhouse of cellular energy</figcaption>
       </figure>
 
@@ -1970,7 +1937,7 @@
     }
 
     const revealTargets = document.querySelectorAll(
-      '.section .section-kicker, .section h3, .section p, .section ul, .section blockquote, .section .figure-callout, .section .section-figure, .section .tldr-summary, .section .facts-block, .section .citation-block, .section .section-tagline'
+      '.section .section-kicker, .section h3, .section p, .section ul, .section blockquote, .section .figure-callout, .section .tldr-summary, .section .facts-block, .section .citation-block, .section .section-tagline'
     );
 
     if (revealTargets.length > 0) {
@@ -1995,21 +1962,65 @@
       }
     }
 
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     const floatingFigures = document.querySelectorAll('.figure-img');
+    const figureBlocks = document.querySelectorAll('.section-figure');
+    const hoverTweens = new Map();
+
     const startFloatingFigure = (element) => {
       if (!window.gsap || element.dataset.floatAnimated === 'true') {
         return;
       }
       element.dataset.floatAnimated = 'true';
-      element.classList.add('animated');
+      element.style.willChange = 'transform, box-shadow';
       gsap.to(element, {
-        y: -8,
-        duration: 3.6,
+        y: -6,
+        duration: 4.8,
         ease: 'sine.inOut',
         yoyo: true,
         repeat: -1
       });
     };
+
+    const startHoverGlow = (element) => {
+      if (!window.gsap || prefersReducedMotion || hoverTweens.has(element)) {
+        return;
+      }
+      const baseShadow = getComputedStyle(element).boxShadow;
+      const tween = gsap.to(element, {
+        boxShadow: '0 14px 34px -18px rgba(79, 209, 197, 0.45)',
+        duration: 0.9,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1
+      });
+      hoverTweens.set(element, { tween, baseShadow });
+    };
+
+    const stopHoverGlow = (element) => {
+      const stored = hoverTweens.get(element);
+      if (!stored || !window.gsap) {
+        return;
+      }
+      stored.tween.kill();
+      hoverTweens.delete(element);
+      gsap.to(element, {
+        boxShadow: stored.baseShadow,
+        duration: 0.6,
+        ease: 'sine.inOut',
+        overwrite: true
+      });
+    };
+
+    if (floatingFigures.length > 0) {
+      floatingFigures.forEach((element) => {
+        element.addEventListener('pointerenter', () => startHoverGlow(element));
+        element.addEventListener('pointerleave', () => stopHoverGlow(element));
+      });
+    }
 
     if (!prefersReducedMotion && floatingFigures.length > 0 && window.gsap) {
       if ('IntersectionObserver' in window) {
@@ -2031,115 +2042,27 @@
       }
     }
 
-    const figureAnimationEntries = [];
-    const registerFigureAnimation = (selector, startAnimation) => {
-      const element = document.querySelector(selector);
-      if (element) {
-        figureAnimationEntries.push({ element, startAnimation, hasStarted: false });
-      }
-    };
-
-    registerFigureAnimation('#figure-pendulum', (element) => {
-      const pendulumTarget = element.querySelector('img, svg');
-      if (!pendulumTarget || !window.gsap) {
-        return;
-      }
-      gsap.set(pendulumTarget, { transformOrigin: '50% 0%', rotation: -10 });
-      const pendulumTimeline = gsap.timeline({ repeat: -1, yoyo: true });
-      pendulumTimeline.to(pendulumTarget, { rotation: 10, duration: 2.4, ease: 'sine.inOut' });
-    });
-
-    registerFigureAnimation('#figure-mitochondria', (element) => {
-      const svg = element.querySelector('svg');
-      if (!svg || !window.gsap) {
-        return;
-      }
-
-      gsap.set(svg, { transformOrigin: '50% 50%' });
-      gsap.to(svg, {
-        scale: 1.015,
-        duration: 2.8,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1
-      });
-
-      const protons = svg.querySelectorAll('.proton');
-      if (protons.length > 0) {
-        gsap.to(protons, {
-          scale: 1.08,
-          opacity: 0.75,
-          duration: 1.6,
-          ease: 'sine.inOut',
-          stagger: 0.12,
-          transformOrigin: '50% 50%',
-          yoyo: true,
-          repeat: -1
+    if (figureBlocks.length > 0) {
+      if (!prefersReducedMotion && window.gsap && window.ScrollTrigger) {
+        figureBlocks.forEach((figure) => {
+          gsap.set(figure, { autoAlpha: 0, y: 16 });
+          gsap.to(figure, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1.0,
+            ease: 'sine.inOut',
+            scrollTrigger: {
+              trigger: figure,
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          });
         });
-      }
-
-      const energyLines = svg.querySelectorAll('.line');
-      energyLines.forEach((line) => {
-        const length = line.getTotalLength();
-        line.style.strokeDasharray = `${length} ${length}`;
-        line.style.strokeDashoffset = `${length}`;
-      });
-
-      if (energyLines.length > 0) {
-        gsap.to(energyLines, {
-          strokeDashoffset: 0,
-          duration: 2.4,
-          ease: 'sine.inOut',
-          repeat: -1,
-          stagger: 0.15
-        });
-      }
-    });
-
-    registerFigureAnimation('#figure-cosmic', (element) => {
-      const cosmicTarget = element.querySelector('img, svg');
-      if (!cosmicTarget || !window.gsap) {
-        return;
-      }
-      gsap.set(cosmicTarget, { transformOrigin: '50% 50%' });
-      gsap.to(cosmicTarget, {
-        rotation: 1.5,
-        duration: 6.5,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1
-      });
-    });
-
-    const startFigureAnimation = (entry) => {
-      if (entry.hasStarted) {
-        return;
-      }
-      entry.hasStarted = true;
-      entry.element.classList.add('animated');
-      entry.startAnimation(entry.element);
-    };
-
-    if (!prefersReducedMotion && figureAnimationEntries.length > 0 && window.gsap) {
-      if ('IntersectionObserver' in window) {
-        const figureObserver = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const match = figureAnimationEntries.find((item) => item.element === entry.target);
-                if (match) {
-                  startFigureAnimation(match);
-                }
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.3, rootMargin: '0px 0px -12% 0px' }
-        );
-
-        figureAnimationEntries.forEach((entry) => figureObserver.observe(entry.element));
       } else {
-        figureAnimationEntries.forEach(startFigureAnimation);
+        figureBlocks.forEach((figure) => {
+          figure.style.opacity = '1';
+          figure.style.transform = 'none';
+        });
       }
     }
   </script>
