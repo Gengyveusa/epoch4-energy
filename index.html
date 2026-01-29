@@ -889,6 +889,104 @@
       text-align: left;
       box-shadow: var(--shadow-sm);
     }
+
+    .figure-svg {
+      width: 100%;
+      max-width: 680px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 14px;
+      background: rgba(2, 6, 23, 0.72);
+    }
+
+    .figure-svg text {
+      font-family: var(--font-system);
+      fill: var(--color-text-primary);
+    }
+
+    .figure-svg .label-muted {
+      fill: var(--color-text-muted);
+    }
+
+    .figure-svg .label-accent {
+      fill: var(--color-accent);
+    }
+
+    .figure-svg .panel {
+      fill: rgba(2, 6, 23, 0.85);
+      stroke: var(--color-border);
+      stroke-width: 1.5;
+    }
+
+    .figure-svg .panel-soft {
+      fill: rgba(15, 23, 42, 0.88);
+      stroke: rgba(79, 209, 197, 0.2);
+      stroke-width: 1.2;
+    }
+
+    .figure-cosmic .cosmic-slice {
+      animation: cosmicPulse 6s ease-in-out infinite;
+    }
+
+    .figure-cosmic .slice-1 {
+      animation-delay: 0s;
+    }
+
+    .figure-cosmic .slice-2 {
+      animation-delay: 1.2s;
+    }
+
+    .figure-cosmic .slice-3 {
+      animation-delay: 2.4s;
+    }
+
+    .figure-pendulum .pendulum-bob {
+      animation: bobPulse 4.5s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    .figure-pendulum .energy-bar {
+      animation: barPulse 5s ease-in-out infinite;
+      transform-origin: bottom;
+      transform-box: fill-box;
+    }
+
+    .figure-pendulum .bar-delay-1 {
+      animation-delay: 0.7s;
+    }
+
+    .figure-pendulum .bar-delay-2 {
+      animation-delay: 1.4s;
+    }
+
+    .figure-mito .proton {
+      animation: protonPulse 3.2s ease-in-out infinite;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    .figure-mito .proton.delay-1 {
+      animation-delay: 0.6s;
+    }
+
+    .figure-mito .proton.delay-2 {
+      animation-delay: 1.2s;
+    }
+
+    .figure-mito .proton.delay-3 {
+      animation-delay: 1.8s;
+    }
+
+    .figure-info .gas-particle {
+      animation: gasDrift 6s ease-in-out infinite alternate;
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    .figure-info .gate-glow {
+      animation: gatePulse 5s ease-in-out infinite;
+    }
     
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -973,6 +1071,10 @@
       .hero-title-cursor {
         animation: none;
       }
+
+      .figure-svg * {
+        animation: none !important;
+      }
     }
 
     @keyframes blink {
@@ -982,6 +1084,69 @@
       }
       50% {
         opacity: 0;
+      }
+    }
+
+    @keyframes cosmicPulse {
+      0%,
+      100% {
+        opacity: 0.85;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bobPulse {
+      0%,
+      100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes barPulse {
+      0%,
+      100% {
+        transform: scaleY(0.98);
+      }
+      50% {
+        transform: scaleY(1.05);
+      }
+    }
+
+    @keyframes protonPulse {
+      0%,
+      100% {
+        opacity: 0.65;
+        transform: translateY(0);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-4px);
+      }
+    }
+
+    @keyframes gasDrift {
+      0% {
+        opacity: 0.6;
+        transform: translateX(0);
+      }
+      100% {
+        opacity: 0.9;
+        transform: translateX(12px);
+      }
+    }
+
+    @keyframes gatePulse {
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+      50% {
+        opacity: 1;
       }
     }
   </style>
@@ -1108,7 +1273,26 @@
         <strong>TL;DR:</strong> At cosmic scales, the universe's energy budget is dominated by dark energy and dark matter, with ordinary matter a small fraction. The section explains why global energy conservation is subtle in expanding spacetime, yet local conservation still holds. This perspective sets a baseline: energy is tied to geometry and evolution, informing how we interpret physical reality at every scale.
       </div>
       <figure class="section-figure" id="figure-cosmic">
-        <img class="figure-img" src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <svg class="figure-svg figure-cosmic" viewBox="0 0 680 420" role="img" aria-labelledby="cosmic-title cosmic-desc">
+          <title id="cosmic-title">COSMIC ENERGY BUDGET</title>
+          <desc id="cosmic-desc">Pie chart showing 68% dark energy, 27% dark matter, and 5% ordinary matter.</desc>
+          <rect class="panel" x="20" y="20" width="640" height="380" rx="18"></rect>
+          <text x="340" y="60" text-anchor="middle" font-size="20" letter-spacing="2" class="label-accent">COSMIC ENERGY BUDGET</text>
+          <circle cx="210" cy="220" r="120" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="70"></circle>
+          <circle class="cosmic-slice slice-1" cx="210" cy="220" r="120" fill="none" stroke="#3b82f6" stroke-width="70" stroke-dasharray="512.7 754" stroke-dashoffset="0" transform="rotate(-90 210 220)"></circle>
+          <circle class="cosmic-slice slice-2" cx="210" cy="220" r="120" fill="none" stroke="#22d3ee" stroke-width="70" stroke-dasharray="203.6 754" stroke-dashoffset="-512.7" transform="rotate(-90 210 220)"></circle>
+          <circle class="cosmic-slice slice-3" cx="210" cy="220" r="120" fill="none" stroke="#fbbf24" stroke-width="70" stroke-dasharray="37.7 754" stroke-dashoffset="-716.3" transform="rotate(-90 210 220)"></circle>
+          <circle cx="210" cy="220" r="60" fill="rgba(2, 6, 23, 0.9)" stroke="rgba(79, 209, 197, 0.3)" stroke-width="2"></circle>
+          <text x="210" y="214" text-anchor="middle" font-size="14" class="label-muted">TOTAL</text>
+          <text x="210" y="236" text-anchor="middle" font-size="16" class="label-accent">100%</text>
+          <rect x="380" y="140" width="18" height="18" fill="#3b82f6" rx="4"></rect>
+          <text x="410" y="155" font-size="14">68% Dark Energy</text>
+          <rect x="380" y="190" width="18" height="18" fill="#22d3ee" rx="4"></rect>
+          <text x="410" y="205" font-size="14">27% Dark Matter</text>
+          <rect x="380" y="240" width="18" height="18" fill="#fbbf24" rx="4"></rect>
+          <text x="410" y="255" font-size="14">5% Ordinary Matter</text>
+          <text x="380" y="298" font-size="12" class="label-muted">Planck 2018 cosmology</text>
+        </svg>
         <figcaption class="figure-caption teal-caption">Figure 1: The cosmic energy budget — 68% dark energy, 27% dark matter, 5% ordinary matter</figcaption>
       </figure>
 
@@ -1147,7 +1331,66 @@
         <strong>TL;DR:</strong> Classical mechanics defines energy as kinetic and potential forms linked by work. This section summarizes the work-energy theorem and the First Law of Thermodynamics, showing that energy changes via heat and work but is never created or destroyed. It connects these principles to metabolism, emphasizing that biological work and heat production are classical energy transformations.
       </div>
       <figure class="section-figure" id="figure-pendulum">
-        <img class="figure-img" src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <svg class="figure-svg figure-pendulum" viewBox="0 0 680 460" role="img" aria-labelledby="pendulum-title pendulum-desc">
+          <title id="pendulum-title">PENDULUM ENERGY</title>
+          <desc id="pendulum-desc">Three pendulum positions showing potential and kinetic energy exchange with a bar chart.</desc>
+          <rect class="panel" x="20" y="20" width="640" height="420" rx="18"></rect>
+          <text x="340" y="60" text-anchor="middle" font-size="20" letter-spacing="2" class="label-accent">PENDULUM ENERGY</text>
+          <rect x="120" y="122" width="440" height="6" fill="rgba(79, 209, 197, 0.25)" rx="3"></rect>
+
+          <text x="160" y="92" text-anchor="middle" font-size="11" class="label-accent">MAX POTENTIAL ENERGY</text>
+          <text x="160" y="110" text-anchor="middle" font-size="11" class="label-muted">KINETIC ENERGY = 0</text>
+
+          <text x="340" y="92" text-anchor="middle" font-size="11" class="label-accent">MAX KINETIC ENERGY</text>
+          <text x="340" y="110" text-anchor="middle" font-size="11" class="label-muted">POTENTIAL ENERGY = 0</text>
+
+          <text x="520" y="92" text-anchor="middle" font-size="11" class="label-accent">MAX POTENTIAL ENERGY</text>
+          <text x="520" y="110" text-anchor="middle" font-size="11" class="label-muted">KINETIC ENERGY = 0</text>
+
+          <g transform="translate(160 126) rotate(-28)">
+            <rect x="-3" y="0" width="6" height="120" fill="rgba(203, 213, 245, 0.7)"></rect>
+            <circle class="pendulum-bob" cx="0" cy="140" r="18" fill="#60a5fa" stroke="rgba(79, 209, 197, 0.35)" stroke-width="2"></circle>
+          </g>
+          <circle cx="160" cy="126" r="6" fill="rgba(79, 209, 197, 0.5)"></circle>
+
+          <g transform="translate(340 126)">
+            <rect x="-3" y="0" width="6" height="120" fill="rgba(203, 213, 245, 0.7)"></rect>
+            <circle class="pendulum-bob" cx="0" cy="140" r="18" fill="#22d3ee" stroke="rgba(79, 209, 197, 0.35)" stroke-width="2"></circle>
+          </g>
+          <circle cx="340" cy="126" r="6" fill="rgba(79, 209, 197, 0.5)"></circle>
+
+          <g transform="translate(520 126) rotate(28)">
+            <rect x="-3" y="0" width="6" height="120" fill="rgba(203, 213, 245, 0.7)"></rect>
+            <circle class="pendulum-bob" cx="0" cy="140" r="18" fill="#60a5fa" stroke="rgba(79, 209, 197, 0.35)" stroke-width="2"></circle>
+          </g>
+          <circle cx="520" cy="126" r="6" fill="rgba(79, 209, 197, 0.5)"></circle>
+
+          <text x="120" y="300" font-size="12" class="label-muted">Energy Distribution</text>
+          <rect x="120" y="370" width="440" height="2" fill="rgba(203, 213, 245, 0.3)"></rect>
+
+          <rect class="energy-bar bar-delay-1" x="130" y="310" width="24" height="60" fill="#60a5fa"></rect>
+          <rect class="energy-bar" x="162" y="370" width="24" height="0" fill="#22d3ee"></rect>
+          <text x="142" y="395" text-anchor="middle" font-size="10" class="label-muted">U</text>
+          <text x="174" y="395" text-anchor="middle" font-size="10" class="label-muted">K</text>
+          <text x="152" y="414" text-anchor="middle" font-size="10" class="label-muted">LEFT</text>
+
+          <rect class="energy-bar" x="310" y="370" width="24" height="0" fill="#60a5fa"></rect>
+          <rect class="energy-bar bar-delay-2" x="342" y="310" width="24" height="60" fill="#22d3ee"></rect>
+          <text x="322" y="395" text-anchor="middle" font-size="10" class="label-muted">U</text>
+          <text x="354" y="395" text-anchor="middle" font-size="10" class="label-muted">K</text>
+          <text x="332" y="414" text-anchor="middle" font-size="10" class="label-muted">CENTER</text>
+
+          <rect class="energy-bar bar-delay-1" x="490" y="310" width="24" height="60" fill="#60a5fa"></rect>
+          <rect class="energy-bar" x="522" y="370" width="24" height="0" fill="#22d3ee"></rect>
+          <text x="502" y="395" text-anchor="middle" font-size="10" class="label-muted">U</text>
+          <text x="534" y="395" text-anchor="middle" font-size="10" class="label-muted">K</text>
+          <text x="512" y="414" text-anchor="middle" font-size="10" class="label-muted">RIGHT</text>
+
+          <rect x="410" y="300" width="14" height="14" fill="#60a5fa" rx="3"></rect>
+          <text x="430" y="311" font-size="11" class="label-muted">Potential Energy (U)</text>
+          <rect x="410" y="322" width="14" height="14" fill="#22d3ee" rx="3"></rect>
+          <text x="430" y="333" font-size="11" class="label-muted">Kinetic Energy (K)</text>
+        </svg>
         <figcaption class="figure-caption teal-caption">Figure 2: Classical energy transformation — kinetic and potential energy exchange in a pendulum</figcaption>
       </figure>
 
@@ -1245,7 +1488,54 @@
         <strong>TL;DR:</strong> Bioenergetics describes how cells convert food into ATP, gradients, and work. This section reviews glycolysis, the TCA cycle, and oxidative phosphorylation, highlighting how electron transport builds a proton gradient that drives ATP synthase. It stresses that metabolism is an integrated energy landscape, so dysfunction in mitochondria or fuel use propagates system-wide effects in health and disease.
       </div>
       <figure class="section-figure" id="figure-mitochondria">
-        <img class="figure-img" src="mitochondria.png" loading="lazy" alt="Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi." style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <svg class="figure-svg figure-mito" viewBox="0 0 720 420" role="img" aria-labelledby="mito-title mito-desc">
+          <title id="mito-title">Mitochondrial ATP Synthesis</title>
+          <desc id="mito-desc">Electron transport chain with complexes I, II, III, IV, a proton gradient, and ATP synthase generating ATP from ADP.</desc>
+          <rect class="panel" x="20" y="20" width="680" height="380" rx="18"></rect>
+          <text x="360" y="55" text-anchor="middle" font-size="20" class="label-accent">Mitochondrial ATP Synthesis</text>
+          <text x="360" y="80" text-anchor="middle" font-size="13" class="label-muted">Oxidative Phosphorylation</text>
+
+          <text x="360" y="115" text-anchor="middle" font-size="12" class="label-muted">Proton Gradient</text>
+          <circle class="proton" cx="140" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-1" cx="190" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-2" cx="240" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-3" cx="290" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton" cx="340" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-1" cx="390" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-2" cx="440" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-3" cx="490" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton" cx="540" cy="130" r="6" fill="#22d3ee"></circle>
+          <circle class="proton delay-1" cx="590" cy="130" r="6" fill="#22d3ee"></circle>
+
+          <rect class="panel-soft" x="70" y="170" width="580" height="80" rx="18"></rect>
+
+          <text x="150" y="152" text-anchor="middle" font-size="12" class="label-accent">NADH</text>
+          <text x="250" y="152" text-anchor="middle" font-size="12" class="label-accent">FADH2</text>
+          <text x="360" y="160" text-anchor="middle" font-size="11" class="label-muted">Electron Flow -> -> -></text>
+
+          <rect x="110" y="182" width="80" height="56" rx="10" fill="rgba(59, 130, 246, 0.6)"></rect>
+          <text x="150" y="215" text-anchor="middle" font-size="14">I</text>
+          <text x="150" y="258" text-anchor="middle" font-size="11" class="label-muted">Complex I</text>
+
+          <rect x="220" y="182" width="80" height="56" rx="10" fill="rgba(96, 165, 250, 0.6)"></rect>
+          <text x="260" y="215" text-anchor="middle" font-size="14">II</text>
+          <text x="260" y="258" text-anchor="middle" font-size="11" class="label-muted">Complex II</text>
+
+          <rect x="340" y="182" width="80" height="56" rx="10" fill="rgba(34, 211, 238, 0.6)"></rect>
+          <text x="380" y="215" text-anchor="middle" font-size="14">III</text>
+          <text x="380" y="258" text-anchor="middle" font-size="11" class="label-muted">Complex III</text>
+
+          <rect x="460" y="182" width="80" height="56" rx="10" fill="rgba(45, 212, 191, 0.6)"></rect>
+          <text x="500" y="215" text-anchor="middle" font-size="14">IV</text>
+          <text x="500" y="258" text-anchor="middle" font-size="11" class="label-muted">Complex IV</text>
+
+          <rect x="560" y="170" width="90" height="80" rx="14" fill="rgba(79, 209, 197, 0.55)" stroke="rgba(79, 209, 197, 0.6)" stroke-width="1.5"></rect>
+          <text x="605" y="214" text-anchor="middle" font-size="12">ATP Synthase</text>
+
+          <text x="90" y="320" font-size="12" class="label-muted">Cellular Metabolism</text>
+          <text x="560" y="300" font-size="12" class="label-muted">ADP -></text>
+          <text x="610" y="300" font-size="12" class="label-accent">ATP</text>
+        </svg>
         <figcaption class="figure-caption teal-caption">Figure 4: Mitochondrial ATP synthesis — the powerhouse of cellular energy</figcaption>
       </figure>
 
@@ -1554,7 +1844,46 @@
         <p><dfn>Landauer's principle</dfn> states that erasing one bit of information requires at least kT ln 2 of energy to be dissipated as heat.</p>
       </blockquote>
       <figure class="section-figure">
-        <img class="figure-img" src="information.png" loading="lazy" alt="Information thermodynamics: the physical cost of erasing information" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <svg class="figure-svg figure-info" viewBox="0 0 720 420" role="img" aria-labelledby="info-title info-desc">
+          <title id="info-title">MAXWELL'S DEMON / INFORMATION</title>
+          <desc id="info-desc">Schematic of Maxwell's demon with entropy sorting and information processing stages.</desc>
+          <rect class="panel" x="20" y="20" width="680" height="380" rx="18"></rect>
+          <text x="360" y="55" text-anchor="middle" font-size="20" class="label-accent">MAXWELL'S DEMON / INFORMATION</text>
+
+          <rect class="panel-soft" x="70" y="60" width="220" height="36" rx="10"></rect>
+          <text x="180" y="83" text-anchor="middle" font-size="11" class="label-muted">INFORMATION ACQUISITION</text>
+
+          <rect class="panel-soft" x="300" y="60" width="220" height="36" rx="10"></rect>
+          <text x="410" y="83" text-anchor="middle" font-size="11" class="label-muted">DECISION &amp; SORTING</text>
+
+          <rect class="panel-soft" x="70" y="110" width="240" height="170" rx="16"></rect>
+          <text x="190" y="135" text-anchor="middle" font-size="12" class="label-accent">HIGH ENTROPY GAS</text>
+          <circle class="gas-particle" cx="110" cy="165" r="6" fill="#60a5fa"></circle>
+          <circle class="gas-particle" cx="150" cy="190" r="5" fill="#22d3ee"></circle>
+          <circle class="gas-particle" cx="200" cy="175" r="7" fill="#93c5fd"></circle>
+          <circle class="gas-particle" cx="240" cy="210" r="6" fill="#60a5fa"></circle>
+          <circle class="gas-particle" cx="130" cy="230" r="6" fill="#22d3ee"></circle>
+          <circle class="gas-particle" cx="210" cy="235" r="5" fill="#93c5fd"></circle>
+
+          <rect class="panel-soft" x="410" y="110" width="240" height="170" rx="16"></rect>
+          <text x="530" y="135" text-anchor="middle" font-size="12" class="label-accent">LOW ENTROPY</text>
+          <circle class="gas-particle" cx="470" cy="185" r="6" fill="#22d3ee"></circle>
+          <circle class="gas-particle" cx="520" cy="210" r="6" fill="#60a5fa"></circle>
+          <circle class="gas-particle" cx="580" cy="190" r="6" fill="#22d3ee"></circle>
+
+          <rect class="gate-glow" x="330" y="170" width="60" height="50" rx="10" fill="rgba(79, 209, 197, 0.4)" stroke="rgba(79, 209, 197, 0.7)" stroke-width="1.5"></rect>
+          <text x="360" y="198" text-anchor="middle" font-size="11" class="label-muted">GATE</text>
+
+          <rect class="panel-soft" x="70" y="300" width="200" height="70" rx="12"></rect>
+          <text x="170" y="326" text-anchor="middle" font-size="10" class="label-muted">QUANTUM UNCERTAINTY</text>
+          <text x="170" y="344" text-anchor="middle" font-size="10" class="label-muted">&amp; MEASUREMENT</text>
+
+          <rect class="panel-soft" x="260" y="300" width="200" height="70" rx="12"></rect>
+          <text x="360" y="335" text-anchor="middle" font-size="10" class="label-muted">REVERSIBLE QUANTUM GATES</text>
+
+          <rect class="panel-soft" x="450" y="300" width="200" height="70" rx="12"></rect>
+          <text x="550" y="335" text-anchor="middle" font-size="10" class="label-muted">INFORMATION ERASURE</text>
+        </svg>
         <figcaption class="figure-caption teal-caption">Figure 9: Information is physical — Landauer's principle and Maxwell's demon</figcaption>
       </figure>
 
