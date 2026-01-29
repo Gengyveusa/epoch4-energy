@@ -926,9 +926,14 @@
       padding: var(--space-lg);
     }
 
-    .lightbox:target {
+    .lightbox:target,
+    .lightbox.is-active {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
     }
 
     .lightbox-overlay {
@@ -2281,6 +2286,72 @@
           button.href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
         }
       });
+    }
+
+    const lightboxLinks = document.querySelectorAll('.figure-zoom-link[href^="#"]');
+    const lightboxes = document.querySelectorAll('.lightbox');
+
+    const openLightbox = (lightbox) => {
+      if (!lightbox) {
+        return;
+      }
+      lightbox.classList.add('is-active');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+    };
+
+    const closeLightbox = (lightbox) => {
+      if (!lightbox) {
+        return;
+      }
+      lightbox.classList.remove('is-active');
+      lightbox.setAttribute('aria-hidden', 'true');
+      if (!document.querySelector('.lightbox.is-active')) {
+        document.body.classList.remove('lightbox-open');
+      }
+    };
+
+    if (lightboxLinks.length > 0) {
+      lightboxLinks.forEach((link) => {
+        const targetId = link.getAttribute('href');
+        if (!targetId) {
+          return;
+        }
+        const target = document.querySelector(targetId);
+        if (!target) {
+          return;
+        }
+
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          openLightbox(target);
+        });
+      });
+    }
+
+    if (lightboxes.length > 0) {
+      lightboxes.forEach((lightbox) => {
+        const closeTargets = lightbox.querySelectorAll('.lightbox-overlay, .lightbox-close');
+        closeTargets.forEach((closeTarget) => {
+          closeTarget.addEventListener('click', (event) => {
+            event.preventDefault();
+            closeLightbox(lightbox);
+          });
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          lightboxes.forEach((lightbox) => closeLightbox(lightbox));
+        }
+      });
+
+      if (window.location.hash) {
+        const targetLightbox = document.querySelector(window.location.hash);
+        if (targetLightbox && targetLightbox.classList.contains('lightbox')) {
+          openLightbox(targetLightbox);
+        }
+      }
     }
 
     if (hero && heroParticles && !prefersReducedMotion) {
