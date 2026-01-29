@@ -1132,7 +1132,10 @@
         <strong>TL;DR:</strong> At cosmic scales, the universe's energy budget is dominated by dark energy and dark matter, with ordinary matter a small fraction. The section explains why global energy conservation is subtle in expanding spacetime, yet local conservation still holds. This perspective sets a baseline: energy is tied to geometry and evolution, informing how we interpret physical reality at every scale.
       </div>
       <figure class="section-figure" id="figure-cosmic">
-        <img class="figure-img" src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <video class="figure-img" autoplay loop muted playsinline preload="auto" poster="cosmic-budget.png" aria-label="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
+          <source src="animations/cosmic-budget.mp4" type="video/mp4" />
+          <img src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        </video>
         <figcaption class="figure-caption teal-caption">Figure 1: The cosmic energy budget — 68% dark energy, 27% dark matter, 5% ordinary matter</figcaption>
       </figure>
 
@@ -1171,7 +1174,10 @@
         <strong>TL;DR:</strong> Classical mechanics defines energy as kinetic and potential forms linked by work. This section summarizes the work-energy theorem and the First Law of Thermodynamics, showing that energy changes via heat and work but is never created or destroyed. It connects these principles to metabolism, emphasizing that biological work and heat production are classical energy transformations.
       </div>
       <figure class="section-figure" id="figure-pendulum">
-        <img class="figure-img" src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <video class="figure-img" autoplay loop muted playsinline preload="auto" poster="classical-energy.png" aria-label="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
+          <source src="animations/pendulum.mp4" type="video/mp4" />
+          <img src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        </video>
         <figcaption class="figure-caption teal-caption">Figure 2: Classical energy transformation — kinetic and potential energy exchange in a pendulum</figcaption>
       </figure>
 
@@ -1269,129 +1275,10 @@
         <strong>TL;DR:</strong> Bioenergetics describes how cells convert food into ATP, gradients, and work. This section reviews glycolysis, the TCA cycle, and oxidative phosphorylation, highlighting how electron transport builds a proton gradient that drives ATP synthase. It stresses that metabolism is an integrated energy landscape, so dysfunction in mitochondria or fuel use propagates system-wide effects in health and disease.
       </div>
       <figure class="section-figure" id="figure-mitochondria">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="mitochondria-title mitochondria-desc" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
-          <title id="mitochondria-title">Mitochondrial ATP Synthesis</title>
-          <desc id="mitochondria-desc">Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi.</desc>
-          <defs>
-            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0b1d33"/>
-              <stop offset="100%" stop-color="#1c4a6a"/>
-            </linearGradient>
-            <linearGradient id="membrane" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#b7791f"/>
-              <stop offset="50%" stop-color="#dd6b20"/>
-              <stop offset="100%" stop-color="#b7791f"/>
-            </linearGradient>
-            <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L12,6 L0,12 Z" fill="#f7fafc"/>
-            </marker>
-            <style>
-              text { font-family: "Helvetica", "Arial", sans-serif; }
-              .title { font-size: 46px; font-weight: 700; fill: #f7fafc; }
-              .subtitle { font-size: 28px; font-weight: 600; fill: #cbd5f5; }
-              .label { font-size: 22px; font-weight: 600; fill: #e2e8f0; }
-              .small { font-size: 18px; fill: #e2e8f0; }
-              .note { font-size: 20px; font-weight: 600; fill: #f7fafc; }
-              .membrane { fill: url(#membrane); stroke: #f6ad55; stroke-width: 3; }
-              .compartment { fill: rgba(255, 255, 255, 0.06); stroke: rgba(255, 255, 255, 0.12); stroke-width: 2; }
-              .matrix { fill: rgba(0, 0, 0, 0.18); stroke: rgba(255, 255, 255, 0.08); stroke-width: 2; }
-              .complex { fill: #2f855a; stroke: #68d391; stroke-width: 3; }
-              .complex-label { font-size: 18px; font-weight: 700; fill: #f7fafc; }
-              .line { stroke: #f7fafc; stroke-width: 3; fill: none; }
-              .proton { fill: #63b3ed; stroke: #bee3f8; stroke-width: 2; }
-              .atp-body { fill: #6b46c1; stroke: #b794f4; stroke-width: 3; }
-              .atp-head { fill: #9f7aea; stroke: #d6bcfa; stroke-width: 3; }
-            </style>
-          </defs>
-
-          <rect width="1400" height="900" fill="url(#bg)"/>
-
-          <text class="title" x="700" y="70" text-anchor="middle">Mitochondrial ATP Synthesis</text>
-          <text class="subtitle" x="700" y="120" text-anchor="middle">Oxidative Phosphorylation</text>
-          <text class="label" x="700" y="168" text-anchor="middle">Electron Transport Chain (Complexes I-IV)</text>
-
-          <rect class="compartment" x="120" y="220" width="1160" height="120" rx="18"/>
-          <text class="small" x="150" y="255">Intermembrane space</text>
-
-          <rect class="membrane" x="120" y="360" width="1160" height="140" rx="28"/>
-          <text class="small" x="700" y="445" text-anchor="middle">Inner mitochondrial membrane</text>
-
-          <rect class="matrix" x="120" y="520" width="1160" height="280" rx="18"/>
-          <text class="small" x="150" y="565">Matrix</text>
-
-          <rect class="complex" x="220" y="300" width="130" height="240" rx="20"/>
-          <text class="complex-label" x="285" y="360" text-anchor="middle">
-            <tspan x="285" dy="0">Complex</tspan>
-            <tspan x="285" dy="22">I</tspan>
-          </text>
-
-          <rect class="complex" x="400" y="300" width="130" height="240" rx="20"/>
-          <text class="complex-label" x="465" y="360" text-anchor="middle">
-            <tspan x="465" dy="0">Complex</tspan>
-            <tspan x="465" dy="22">II</tspan>
-          </text>
-
-          <rect class="complex" x="580" y="300" width="130" height="240" rx="20"/>
-          <text class="complex-label" x="645" y="360" text-anchor="middle">
-            <tspan x="645" dy="0">Complex</tspan>
-            <tspan x="645" dy="22">III</tspan>
-          </text>
-
-          <rect class="complex" x="760" y="300" width="130" height="240" rx="20"/>
-          <text class="complex-label" x="825" y="360" text-anchor="middle">
-            <tspan x="825" dy="0">Complex</tspan>
-            <tspan x="825" dy="22">IV</tspan>
-          </text>
-
-          <text class="label" x="60" y="340">NADH</text>
-          <line class="line" x1="130" y1="335" x2="220" y2="335" marker-end="url(#arrow)"/>
-          <text class="small" x="165" y="315">e-</text>
-
-          <text class="label" x="60" y="430">FADH2</text>
-          <line class="line" x1="150" y1="425" x2="400" y2="425" marker-end="url(#arrow)"/>
-          <text class="small" x="250" y="405">e-</text>
-
-          <line class="line" x1="350" y1="280" x2="580" y2="280" marker-end="url(#arrow)"/>
-          <line class="line" x1="530" y1="300" x2="580" y2="300" marker-end="url(#arrow)"/>
-          <line class="line" x1="710" y1="280" x2="760" y2="280" marker-end="url(#arrow)"/>
-          <text class="small" x="455" y="265">e-</text>
-          <text class="small" x="735" y="265">e-</text>
-
-          <line class="line" x1="285" y1="300" x2="285" y2="230" marker-end="url(#arrow)"/>
-          <text class="small" x="300" y="255">H+</text>
-          <line class="line" x1="645" y1="300" x2="645" y2="230" marker-end="url(#arrow)"/>
-          <text class="small" x="660" y="255">H+</text>
-          <line class="line" x1="825" y1="300" x2="825" y2="230" marker-end="url(#arrow)"/>
-          <text class="small" x="840" y="255">H+</text>
-
-          <circle class="proton" cx="360" cy="260" r="12"/>
-          <text class="small" x="360" y="266" text-anchor="middle">H+</text>
-          <circle class="proton" cx="460" cy="240" r="12"/>
-          <text class="small" x="460" y="246" text-anchor="middle">H+</text>
-          <circle class="proton" cx="560" cy="260" r="12"/>
-          <text class="small" x="560" y="266" text-anchor="middle">H+</text>
-          <circle class="proton" cx="960" cy="240" r="12"/>
-          <text class="small" x="960" y="246" text-anchor="middle">H+</text>
-          <circle class="proton" cx="1040" cy="265" r="12"/>
-          <text class="small" x="1040" y="271" text-anchor="middle">H+</text>
-
-          <text class="label" x="980" y="260">Proton gradient (H+)</text>
-          <line class="line" x1="960" y1="265" x2="900" y2="265" marker-end="url(#arrow)"/>
-
-          <ellipse class="atp-body" cx="1070" cy="430" rx="80" ry="40"/>
-          <rect class="atp-body" x="1045" y="430" width="50" height="200" rx="18"/>
-          <circle class="atp-head" cx="1070" cy="650" r="90"/>
-          <circle class="atp-body" cx="1070" cy="650" r="45"/>
-
-          <line class="line" x1="1070" y1="230" x2="1070" y2="520" marker-end="url(#arrow)"/>
-          <text class="small" x="1085" y="300">H+</text>
-
-          <text class="label" x="1210" y="610">ATP synthase</text>
-          <line class="line" x1="1185" y1="605" x2="1135" y2="620" marker-end="url(#arrow)"/>
-
-          <text class="note" x="930" y="805">ADP + Pi -> ATP</text>
-          <line class="line" x1="1070" y1="740" x2="1070" y2="780" marker-end="url(#arrow)"/>
-        </svg>
+        <video class="figure-img" autoplay loop muted playsinline preload="auto" poster="mitochondria.png" aria-label="Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi." style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;">
+          <source src="animations/mitochondria.mp4" type="video/mp4" />
+          <img src="mitochondria.png" loading="lazy" alt="Diagram of oxidative phosphorylation showing the electron transport chain complexes I-IV, a proton gradient, and ATP synthase producing ATP from ADP and Pi." style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        </video>
         <figcaption class="figure-caption teal-caption">Figure 4: Mitochondrial ATP synthesis — the powerhouse of cellular energy</figcaption>
       </figure>
 
