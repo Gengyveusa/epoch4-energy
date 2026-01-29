@@ -515,6 +515,13 @@
     .section {
       margin-bottom: var(--space-4xl);
       scroll-margin-top: calc(var(--header-height) + var(--space-lg));
+      opacity: 0;
+      transform: translateY(20px);
+      will-change: opacity, transform;
+    }
+
+    .section.is-visible {
+      animation: fadeSlideUp 0.8s ease forwards;
     }
     
     .section-kicker {
@@ -947,18 +954,6 @@
       }
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      will-change: opacity, transform;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
     /* Smooth Scroll Enhancement */
     @media (prefers-reduced-motion: no-preference) {
       html {
@@ -967,14 +962,25 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal {
+      .section {
         opacity: 1;
         transform: none;
-        transition: none;
+        animation: none;
       }
 
       .hero-title-cursor {
         animation: none;
+      }
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -1937,13 +1943,9 @@
       });
     }
 
-    const revealTargets = document.querySelectorAll(
-      '.section .section-kicker, .section h3, .section p, .section ul, .section blockquote, .section .figure-callout, .section .section-figure, .section .tldr-summary, .section .facts-block, .section .citation-block, .section .section-tagline'
-    );
+    const revealSections = document.querySelectorAll('.section');
 
-    if (revealTargets.length > 0) {
-      revealTargets.forEach((target) => target.classList.add('reveal'));
-
+    if (revealSections.length > 0) {
       if (!prefersReducedMotion && 'IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver(
           (entries, observer) => {
@@ -1954,12 +1956,12 @@
               }
             });
           },
-          { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+          { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
         );
 
-        revealTargets.forEach((target) => revealObserver.observe(target));
+        revealSections.forEach((section) => revealObserver.observe(section));
       } else {
-        revealTargets.forEach((target) => target.classList.add('is-visible'));
+        revealSections.forEach((section) => section.classList.add('is-visible'));
       }
     }
   </script>
