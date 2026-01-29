@@ -876,6 +876,28 @@
       color: var(--color-text-muted);
       font-style: italic;
     }
+
+    .section-figure.figure-large .figure-zoom-link {
+      display: block;
+      width: 100%;
+      cursor: zoom-in;
+    }
+
+    .section-figure.figure-large .figure-img {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 14px;
+    }
+
+    .figure-zoom-hint {
+      display: block;
+      margin-top: var(--space-sm);
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+      font-weight: 500;
+    }
     
     .teal-caption {
       background: linear-gradient(135deg, rgba(79, 209, 197, 0.15) 0%, rgba(79, 209, 197, 0.08) 100%);
@@ -888,6 +910,80 @@
       font-style: normal;
       text-align: left;
       box-shadow: var(--shadow-sm);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-speed);
+      z-index: 2100;
+      padding: var(--space-lg);
+    }
+
+    .lightbox:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-overlay {
+      position: absolute;
+      inset: 0;
+      cursor: zoom-out;
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 1;
+      max-width: 95vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .lightbox img {
+      max-width: 95vw;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .lightbox-caption {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--color-text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(79, 209, 197, 0.2);
     }
 
     .figure-svg {
@@ -1949,10 +2045,23 @@
       <div class="tldr-summary">
         <strong>TL;DR:</strong> The conclusion integrates the framework: energy conservation, entropy, least action, symmetry, and information thermodynamics jointly define how living systems operate. It argues that medicine must track energy flow and information integrity across scales, from mitochondria to tissues to the organism. Epoch #4 proposes a physics-informed, systems-level approach that treats health as stable energy flow and disease as disrupted gradients.
       </div>
-      <figure class="section-figure">
-        <img class="figure-img" src="epoch4-synthesis.png" loading="lazy" alt="Epoch #4 framework: energy as the spine connecting information, terrain, and dynamics" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
-        <figcaption class="figure-caption teal-caption">Figure 10: The Epoch #4 synthesis — energy, information, terrain, Δ, and Ψ</figcaption>
+      <figure class="section-figure figure-large" id="figure-epoch4-synthesis">
+        <a class="figure-zoom-link" href="#figure-epoch4-synthesis-zoom" aria-label="Open a larger view of Figure 10">
+          <img class="figure-img" src="epoch4-synthesis.png" loading="lazy" alt="Epoch #4 framework: energy as the spine connecting information, terrain, and dynamics" />
+        </a>
+        <figcaption class="figure-caption teal-caption">
+          Figure 10: The Epoch #4 synthesis — energy, information, terrain, Δ, and Ψ
+          <span class="figure-zoom-hint">Click to zoom the full-resolution diagram.</span>
+        </figcaption>
       </figure>
+      <div class="lightbox" id="figure-epoch4-synthesis-zoom">
+        <a class="lightbox-overlay" href="#" aria-label="Close the zoomed diagram"></a>
+        <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Figure 10 enlarged">
+          <img src="epoch4-synthesis.png" alt="Epoch #4 framework: energy as the spine connecting information, terrain, and dynamics" />
+          <div class="lightbox-caption">Figure 10: The Epoch #4 synthesis — energy, information, terrain, Δ, and Ψ</div>
+          <a class="lightbox-close" href="#" aria-label="Close">&times;</a>
+        </div>
+      </div>
 
       <p class="section-tagline">Energy, information, and structure as the triad that underpins a new medical and scientific paradigm.</p>
       
