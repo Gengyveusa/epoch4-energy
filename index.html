@@ -857,6 +857,16 @@
     }
     
     /* Figure Styles */
+    @keyframes floatAnimation {
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
     .section-figure {
       margin: var(--space-xl) 0 var(--space-lg);
       text-align: center;
@@ -866,6 +876,7 @@
     .section-figure svg {
       box-shadow: var(--shadow-lg);
       transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+      animation: floatAnimation 3s ease-in-out infinite;
     }
     
     .section-figure img:hover,
@@ -877,6 +888,10 @@
     .section-figure.animated img,
     .section-figure.animated svg {
       will-change: transform;
+    }
+
+    .figure-animate {
+      animation: floatAnimation 3s ease-in-out infinite;
     }
     
     .figure-caption {
