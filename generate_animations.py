@@ -71,9 +71,26 @@ def generate_animation(image_path, prompt):
 
 
 def _resolve_output_url(output):
+    if output is None:
+        return None
+    if isinstance(output, dict):
+        for value in output.values():
+            url = _resolve_output_url(value)
+            if url:
+                return url
+        return None
     if isinstance(output, (list, tuple)):
-        return output[0] if output else None
-    return output
+        for item in output:
+            url = _resolve_output_url(item)
+            if url:
+                return url
+        return None
+    if isinstance(output, (str, bytes)):
+        return output
+    url = getattr(output, "url", None)
+    if url:
+        return str(url)
+    return None
 
 
 def main():
