@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Nature of Energy in Epoch #4 | White Paper</title>
   <meta name="description" content="A multiscale exploration of energy from cosmic expansion to mitochondrial metabolism, entropy, complexity, and information thermodynamics.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Nature of Energy in Epoch #4">
+  <meta property="og:description" content="A multiscale exploration of energy from cosmic expansion to mitochondrial metabolism, entropy, complexity, and information thermodynamics.">
+  <meta property="og:url" content="https://epoch4-energy.com/">
+  <meta property="og:image" content="https://epoch4-energy.com/epoch4-synthesis.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Nature of Energy in Epoch #4">
+  <meta name="twitter:description" content="A multiscale exploration of energy from cosmic expansion to mitochondrial metabolism, entropy, complexity, and information thermodynamics.">
+  <meta name="twitter:image" content="https://epoch4-energy.com/epoch4-synthesis.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ScholarlyArticle",
+      "headline": "The Nature of Energy in Epoch #4",
+      "description": "A multiscale exploration of energy from cosmic expansion to mitochondrial metabolism, entropy, complexity, and information thermodynamics.",
+      "author": {
+        "@type": "Person",
+        "name": "S. Thaddeus Connelly, DDS, MD, PhD, FACS"
+      },
+      "image": "https://epoch4-energy.com/epoch4-synthesis.png",
+      "url": "https://epoch4-energy.com/"
+    }
+  </script>
   <style>
     /* Design System Variables */
     :root {
@@ -12,8 +37,8 @@
       --color-bg-dark: #0a1929;
       --color-bg-darker: #020617;
       --color-text-primary: #f7fafc;
-      --color-text-muted: #a0aec0;
-      --color-text-dim: #718096;
+      --color-text-muted: #cbd5f5;
+      --color-text-dim: #a0aec0;
       --color-accent: #4fd1c5;
       --color-accent-hover: #38b2ac;
       --color-accent-dim: rgba(79, 209, 197, 0.1);
@@ -64,6 +89,28 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, #4fd1c5 0%, #63b3ed 100%);
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
     }
     
     /* Header */
@@ -144,6 +191,32 @@
     .nav a:hover {
       color: var(--color-accent);
     }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 0.5rem 0.6rem;
+      border-radius: 10px;
+      border: 1px solid var(--color-border);
+      background: rgba(79, 209, 197, 0.08);
+      cursor: pointer;
+      transition: border-color var(--transition-speed), background var(--transition-speed);
+    }
+
+    .nav-toggle:hover {
+      border-color: var(--color-accent);
+      background: rgba(79, 209, 197, 0.15);
+    }
+
+    .nav-toggle span:not(.sr-only) {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--color-text-primary);
+      border-radius: 2px;
+    }
     
     /* Hero Section */
     .hero {
@@ -208,6 +281,30 @@
     
     .hero-badge .separator {
       color: var(--color-text-dim);
+    }
+
+    .hero-download {
+      margin-top: var(--space-lg);
+    }
+
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-primary);
+      background: var(--color-accent-dim);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform var(--transition-speed), background var(--transition-speed), border-color var(--transition-speed);
+    }
+
+    .download-link:hover {
+      transform: translateY(-2px);
+      background: rgba(79, 209, 197, 0.18);
+      border-color: var(--color-accent);
     }
     
     /* Main Content */
@@ -306,6 +403,30 @@
       background: linear-gradient(90deg, transparent 0%, var(--color-border) 50%, transparent 100%);
       margin: var(--space-4xl) 0;
     }
+
+    .citation-block {
+      margin-top: var(--space-xl);
+      padding: var(--space-lg) var(--space-xl);
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      background: rgba(79, 209, 197, 0.06);
+      text-align: left;
+    }
+
+    .citation-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    .citation-text {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
     
     /* Footer */
     .footer {
@@ -314,6 +435,140 @@
       color: var(--color-text-dim);
       font-size: 0.9rem;
       border-top: 1px solid rgba(79, 209, 197, 0.1);
+    }
+
+    .footer-share {
+      margin-top: var(--space-lg);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+    }
+
+    .share-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      background: rgba(79, 209, 197, 0.08);
+      transition: border-color var(--transition-speed), background var(--transition-speed), transform var(--transition-speed);
+    }
+
+    .share-button:hover {
+      border-color: var(--color-accent);
+      background: rgba(79, 209, 197, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .signup {
+      margin: 0 auto;
+      padding: var(--space-3xl) var(--space-lg);
+      max-width: var(--content-max-width);
+    }
+
+    .signup-inner {
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      background: var(--color-section-bg);
+      padding: var(--space-2xl) var(--space-xl);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .signup-inner h3 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: var(--space-sm);
+    }
+
+    .signup-inner p {
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    .signup-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .signup-form input[type="email"] {
+      flex: 1 1 240px;
+      min-width: 220px;
+      padding: 0.75rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.6);
+      color: var(--color-text-primary);
+      font-size: 1rem;
+    }
+
+    .signup-form input[type="email"]::placeholder {
+      color: var(--color-text-dim);
+    }
+
+    .signup-form button {
+      padding: 0.75rem 1.6rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--color-accent);
+      color: var(--color-bg-darker);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition-speed), background var(--transition-speed);
+    }
+
+    .signup-form button:hover {
+      transform: translateY(-2px);
+      background: var(--color-accent-hover);
+    }
+
+    .form-message {
+      margin-top: var(--space-md);
+      font-size: 0.95rem;
+      min-height: 1.2em;
+    }
+
+    .form-message.success {
+      color: var(--color-accent);
+    }
+
+    .form-message.error {
+      color: #f56565;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      padding: 0.65rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      background: rgba(79, 209, 197, 0.2);
+      color: var(--color-text-primary);
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity var(--transition-speed), transform var(--transition-speed), background var(--transition-speed);
+      z-index: 1200;
+    }
+
+    .back-to-top.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: rgba(79, 209, 197, 0.35);
     }
     
     /* Figure Styles */
@@ -359,12 +614,22 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-self: flex-end;
+      }
       
       .nav {
         width: 100%;
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-sm);
+        display: none;
+      }
+
+      .nav.is-open {
+        display: flex;
       }
       
       .hero {
@@ -382,6 +647,19 @@
       .figure-callout {
         padding: var(--space-md) var(--space-lg);
       }
+
+      .signup-inner {
+        padding: var(--space-xl) var(--space-lg);
+      }
+
+      .signup-form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .signup-form button {
+        width: 100%;
+      }
     }
     
     /* Smooth Scroll Enhancement */
@@ -393,6 +671,7 @@
   </style>
 </head>
 <body>
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
   <!-- Header -->
   <header class="header">
     <div class="header-container">
@@ -403,7 +682,13 @@
           <div class="brand-tagline">Energy Framework</div>
         </div>
       </div>
-      <nav class="nav">
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Menu</span>
+      </button>
+      <nav class="nav" id="primary-nav">
         <a href="#introduction">Introduction</a>
         <a href="#cosmic">Cosmic Scale</a>
         <a href="#classical">Classical</a>
@@ -436,6 +721,9 @@
         <span>Δ</span>
         <span class="separator">·</span>
         <span>Ψ</span>
+      </div>
+      <div class="hero-download">
+        <a class="download-link" href="epoch4-energy.pdf">Download as PDF</a>
       </div>
     </div>
   </section>
@@ -477,7 +765,7 @@
       <div class="section-kicker">Section 2</div>
       <h3>Energy on a Cosmic Scale — The Universe's Energy Budget</h3>
       <figure class="section-figure">
-        <img src="cosmic-budget.png" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 1: The cosmic energy budget — 68% dark energy, 27% dark matter, 5% ordinary matter</figcaption>
       </figure>
 
@@ -513,7 +801,7 @@
       <div class="section-kicker">Section 3</div>
       <h3>Classical Energy — Work, Heat, and Conservation</h3>
       <figure class="section-figure">
-        <img src="classical-energy.png" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 2: Classical energy transformation — kinetic and potential energy exchange in a pendulum</figcaption>
       </figure>
 
@@ -560,7 +848,7 @@
       <div class="section-kicker">Section 4</div>
       <h3>Relativity and Mass–Energy Equivalence (E = mc²)</h3>
       <figure class="section-figure">
-        <img src="relativity.png" alt="Mass-energy equivalence: how matter transforms into energy in nuclear reactions" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="relativity.png" loading="lazy" alt="Mass-energy equivalence: how matter transforms into energy in nuclear reactions" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 3: E=mc² — mass-energy equivalence in nuclear fusion</figcaption>
       </figure>
 
@@ -605,7 +893,7 @@
       <div class="section-kicker">Section 5</div>
       <h3>Energy in the Human Body — Metabolism and ATP</h3>
       <figure class="section-figure">
-        <img src="mitochondria.png" alt="Cellular energy production: mitochondrial ATP synthesis through electron transport" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="mitochondria.png" loading="lazy" alt="Cellular energy production: mitochondrial ATP synthesis through electron transport" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 4: Mitochondrial ATP synthesis — the powerhouse of cellular energy</figcaption>
       </figure>
 
@@ -662,7 +950,7 @@
       <div class="section-kicker">Section 6</div>
       <h3>Entropy and the Arrow of Time</h3>
       <figure class="section-figure">
-        <img src="entropy.png" alt="Entropy increases over time: energy dispersal from ordered to disordered states" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="entropy.png" loading="lazy" alt="Entropy increases over time: energy dispersal from ordered to disordered states" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 5: The arrow of time — entropy and energy dispersal</figcaption>
       </figure>
 
@@ -717,7 +1005,7 @@
       <div class="section-kicker">Section 7</div>
       <h3>Complexity, Life, and Dissipative Structures</h3>
       <figure class="section-figure">
-        <img src="dissipative.png" alt="Self-organizing dissipative structures: complexity emerging from energy flow" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="dissipative.png" loading="lazy" alt="Self-organizing dissipative structures: complexity emerging from energy flow" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 6: Dissipative structures — self-organization far from equilibrium</figcaption>
       </figure>
 
@@ -775,7 +1063,7 @@
       <div class="section-kicker">Section 8</div>
       <h3>The Principle of Least Action</h3>
       <figure class="section-figure">
-        <img src="least-action.png" alt="Least action principle: nature optimizes paths through spacetime" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="least-action.png" loading="lazy" alt="Least action principle: nature optimizes paths through spacetime" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 7: The principle of least action — nature as an optimizer</figcaption>
       </figure>
 
@@ -831,7 +1119,7 @@
       <div class="section-kicker">Section 9</div>
       <h3>Noether's Theorem — Symmetry → Conservation</h3>
       <figure class="section-figure">
-        <img src="noether.png" alt="Noether's theorem: symmetries in nature produce conservation laws" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="noether.png" loading="lazy" alt="Noether's theorem: symmetries in nature produce conservation laws" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 8: Noether's theorem — time symmetry yields energy conservation</figcaption>
       </figure>
 
@@ -883,7 +1171,7 @@
       <div class="section-kicker">Section 10</div>
       <h3>Energy and Information — Landauer, Maxwell's Demon, and Beyond</h3>
       <figure class="section-figure">
-        <img src="information.png" alt="Information thermodynamics: the physical cost of erasing information" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="information.png" loading="lazy" alt="Information thermodynamics: the physical cost of erasing information" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 9: Information is physical — Landauer's principle and Maxwell's demon</figcaption>
       </figure>
 
@@ -947,7 +1235,7 @@
       <div class="section-kicker">Section 11</div>
       <h3>Conclusion — Energy as the Spine of Epoch #4</h3>
       <figure class="section-figure">
-        <img src="epoch4-synthesis.png" alt="Epoch #4 framework: energy as the spine connecting information, terrain, and dynamics" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
+        <img src="epoch4-synthesis.png" loading="lazy" alt="Epoch #4 framework: energy as the spine connecting information, terrain, and dynamics" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 10: The Epoch #4 synthesis — energy, information, terrain, Δ, and Ψ</figcaption>
       </figure>
 
@@ -1001,12 +1289,140 @@
         <div class="figure-callout-label">Closing Note</div>
         <div class="figure-callout-text">"Energy is the only life and is from the Body; and Reason is the bound or outward circumference of Energy." — William Blake, reimagined for the 21st century as: Energy is the spine, information the genome, and the terrain the body in which they unite.</div>
       </div>
+
+      <div class="citation-block">
+        <div class="citation-label">Citation</div>
+        <p class="citation-text">Connelly, S. Thaddeus. "The Nature of Energy in Epoch #4." Epoch #4 White Paper. Accessed <span id="citation-date"></span>.</p>
+      </div>
     </article>
   </main>
+
+  <section class="signup" id="signup">
+    <div class="signup-inner">
+      <h3>Stay Updated on Epoch #4</h3>
+      <p>Join our newsletter for updates on energy research and new white papers</p>
+      <form class="signup-form" action="https://formspree.io/f/xyzexample" method="POST">
+        <label class="sr-only" for="signup-email">Email</label>
+        <input type="email" id="signup-email" name="email" placeholder="your@email.com" autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="form-message" id="signup-message" role="status" aria-live="polite"></p>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
     <p>© Fasolati · Epoch #4 · The Nature of Energy</p>
+    <div class="footer-share">
+      <a class="share-button" data-share="x" href="https://twitter.com/intent/tweet?text=The%20Nature%20of%20Energy%20in%20Epoch%20%234&url=https%3A%2F%2Fepoch4-energy.com%2F" target="_blank" rel="noopener">Share on X</a>
+      <a class="share-button" data-share="linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fepoch4-energy.com%2F" target="_blank" rel="noopener">Share on LinkedIn</a>
+    </div>
   </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">Back to Top</button>
+
+  <script>
+    const progressBar = document.getElementById('reading-progress');
+    const backToTopButton = document.querySelector('.back-to-top');
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    const citationDate = document.getElementById('citation-date');
+    const signupForm = document.querySelector('.signup-form');
+    const signupMessage = document.getElementById('signup-message');
+    const shareButtons = document.querySelectorAll('[data-share]');
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+
+      if (progressBar) {
+        progressBar.style.width = `${progress}%`;
+      }
+
+      if (backToTopButton) {
+        if (scrollTop > 400) {
+          backToTopButton.classList.add('is-visible');
+        } else {
+          backToTopButton.classList.remove('is-visible');
+        }
+      }
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', updateProgress);
+    window.addEventListener('resize', updateProgress);
+
+    if (backToTopButton) {
+      backToTopButton.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      nav.addEventListener('click', (event) => {
+        if (event.target.tagName === 'A' && nav.classList.contains('is-open')) {
+          nav.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    if (citationDate) {
+      citationDate.textContent = new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    if (signupForm && signupMessage) {
+      signupForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        signupMessage.textContent = 'Submitting...';
+        signupMessage.classList.remove('success', 'error');
+
+        try {
+          const response = await fetch(signupForm.action, {
+            method: signupForm.method,
+            body: new FormData(signupForm),
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            signupMessage.textContent = 'Thanks for subscribing! Check your inbox for updates.';
+            signupMessage.classList.add('success');
+            signupForm.reset();
+          } else {
+            signupMessage.textContent = 'Something went wrong. Please try again.';
+            signupMessage.classList.add('error');
+          }
+        } catch (error) {
+          signupMessage.textContent = 'Network error. Please try again later.';
+          signupMessage.classList.add('error');
+        }
+      });
+    }
+
+    if (shareButtons.length > 0) {
+      const pageUrl = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+      shareButtons.forEach((button) => {
+        if (button.dataset.share === 'x') {
+          button.href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`;
+        }
+        if (button.dataset.share === 'linkedin') {
+          button.href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+        }
+      });
+    }
+  </script>
 </body>
 </html>
