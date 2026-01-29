@@ -258,7 +258,7 @@
       border: 0;
     }
 
-    .particle-canvas {
+    #particle-bg {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -992,8 +992,8 @@
   </style>
 </head>
 <body>
+  <canvas id="particle-bg" aria-hidden="true"></canvas>
   <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
-  <canvas class="particle-canvas" id="particle-canvas" aria-hidden="true"></canvas>
   <!-- Header -->
   <header class="header">
     <div class="header-container">
@@ -1723,7 +1723,7 @@
     const heroTitle = document.querySelector('.hero-title');
     const heroTitleText = document.querySelector('.hero-title-text');
     const heroTitleCursor = document.querySelector('.hero-title-cursor');
-    const particleCanvas = document.getElementById('particle-canvas');
+    const particleCanvas = document.getElementById('particle-bg');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const updateProgress = () => {
