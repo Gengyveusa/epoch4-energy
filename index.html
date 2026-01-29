@@ -19,15 +19,158 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ScholarlyArticle",
-      "headline": "The Nature of Energy in Epoch #4",
-      "description": "A multiscale exploration of energy from cosmic expansion to mitochondrial metabolism, entropy, complexity, and information thermodynamics.",
-      "author": {
-        "@type": "Person",
-        "name": "S. Thaddeus Connelly, DDS, MD, PhD, FACS"
-      },
-      "image": "https://epoch4-energy.com/epoch4-synthesis.png",
-      "url": "https://epoch4-energy.com/"
+      "@graph": [
+        {
+          "@type": "ScholarlyArticle",
+          "headline": "The Nature of Energy in Epoch #4",
+          "description": "A multiscale exploration of energy from cosmic expansion to mitochondrial metabolism, entropy, complexity, and information thermodynamics.",
+          "author": {
+            "@type": "Person",
+            "name": "S. Thaddeus Connelly, DDS, MD, PhD, FACS"
+          },
+          "image": "https://epoch4-energy.com/epoch4-synthesis.png",
+          "url": "https://epoch4-energy.com/",
+          "datePublished": "2026-01-29",
+          "dateModified": "2026-01-29",
+          "keywords": [
+            "Epoch #4",
+            "energy",
+            "bioenergetics",
+            "entropy",
+            "information thermodynamics",
+            "Noether's theorem",
+            "least action",
+            "cosmology",
+            "mitochondria",
+            "systems biology",
+            "complexity"
+          ],
+          "educationalLevel": "Graduate",
+          "learningResourceType": "White Paper",
+          "about": [
+            {
+              "@type": "Thing",
+              "name": "Energy"
+            },
+            {
+              "@type": "Thing",
+              "name": "Entropy"
+            },
+            {
+              "@type": "Thing",
+              "name": "Bioenergetics"
+            },
+            {
+              "@type": "Thing",
+              "name": "Information Thermodynamics"
+            },
+            {
+              "@type": "Thing",
+              "name": "Complexity"
+            },
+            {
+              "@type": "Thing",
+              "name": "Noether's Theorem"
+            },
+            {
+              "@type": "Thing",
+              "name": "Principle of Least Action"
+            },
+            {
+              "@type": "Thing",
+              "name": "Mitochondria"
+            },
+            {
+              "@type": "Thing",
+              "name": "Cosmology"
+            }
+          ],
+          "citation": [
+            {
+              "@type": "ScholarlyArticle",
+              "name": "Planck 2018 results. VI. Cosmological parameters",
+              "author": {
+                "@type": "Organization",
+                "name": "Planck Collaboration"
+              },
+              "datePublished": "2018"
+            },
+            {
+              "@type": "ScholarlyArticle",
+              "name": "On the Electrodynamics of Moving Bodies",
+              "author": {
+                "@type": "Person",
+                "name": "Albert Einstein"
+              },
+              "datePublished": "1905"
+            },
+            {
+              "@type": "ScholarlyArticle",
+              "name": "Invariante Variationsprobleme",
+              "author": {
+                "@type": "Person",
+                "name": "Emmy Noether"
+              },
+              "datePublished": "1918"
+            },
+            {
+              "@type": "ScholarlyArticle",
+              "name": "Irreversibility and Heat Generation in the Computing Process",
+              "author": {
+                "@type": "Person",
+                "name": "Rolf Landauer"
+              },
+              "datePublished": "1961"
+            },
+            {
+              "@type": "Book",
+              "name": "Self-Organization in Nonequilibrium Systems",
+              "author": {
+                "@type": "Person",
+                "name": "Ilya Prigogine"
+              },
+              "datePublished": "1977"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How does energy flow shape health in Epoch #4?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Health is framed as stable, well-regulated energy flow through mitochondria, tissues, and signaling networks, while disease reflects disrupted gradients and inefficient ATP production."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does entropy relate to biological complexity?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Living systems maintain low internal entropy by exporting heat and waste; complexity persists only with continuous energy throughput that raises entropy in the environment."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is ATP called the energy currency of the cell?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ATP stores chemical energy in phosphate bonds that can be rapidly transferred to drive cellular work, making it the standard intermediate for energy exchange."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do mitochondria produce ATP?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Mitochondria use the electron transport chain to pump protons across the inner membrane, creating a gradient that ATP synthase converts into ATP during oxidative phosphorylation."
+              }
+            }
+          ]
+        }
+      ]
     }
   </script>
   <style>
@@ -344,6 +487,80 @@
       font-style: italic;
       margin-bottom: var(--space-xl);
       line-height: 1.5;
+    }
+
+    .tldr-summary {
+      margin: var(--space-md) 0 var(--space-lg);
+      padding: var(--space-md) var(--space-lg);
+      border-left: 4px solid var(--color-accent);
+      background: rgba(79, 209, 197, 0.08);
+      color: var(--color-text-muted);
+      font-style: italic;
+      border-radius: 8px;
+    }
+
+    .tldr-summary strong {
+      color: var(--color-text-primary);
+      font-style: normal;
+    }
+
+    .section .question-heading {
+      font-size: 1.15rem;
+      text-transform: none;
+      letter-spacing: 0;
+      margin: var(--space-lg) 0 var(--space-sm);
+    }
+
+    .quotable-definition {
+      margin: var(--space-lg) 0;
+      padding: var(--space-md) var(--space-lg);
+      border-left: 4px solid var(--color-accent);
+      background: rgba(79, 209, 197, 0.06);
+      color: var(--color-text-muted);
+      font-style: italic;
+      border-radius: 8px;
+    }
+
+    .quotable-definition p {
+      margin: 0;
+    }
+
+    .quotable-definition dfn {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .facts-block {
+      margin: var(--space-xl) 0;
+      padding: var(--space-lg) var(--space-xl);
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      background: rgba(79, 209, 197, 0.08);
+    }
+
+    .facts-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      font-weight: 700;
+      margin-bottom: var(--space-sm);
+    }
+
+    .facts-block ul {
+      margin: var(--space-md) 0 0 var(--space-lg);
+      list-style: disc;
+    }
+
+    .facts-block li {
+      padding-left: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .facts-block li::before {
+      content: none;
     }
     
     .section p {
@@ -734,6 +951,24 @@
     <article id="introduction" class="section">
       <div class="section-kicker">Section 1</div>
       <h3>Introduction — Why Energy Sits at the Center of Epoch #4</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Epoch #4 treats energy as the shared currency linking cosmology, mechanics, biology, and information. This section frames energy as conserved yet transformable, showing how symmetry, entropy, and information costs shape every scale from the universe to mitochondria. The core claim is that health and disease are best understood as patterns of energy flow and degradation.
+      </div>
+      <h3 id="what-is-energy-epoch4" class="question-heading">What is energy in the context of Epoch #4?</h3>
+      <p>In Epoch #4, energy is the measurable capacity to drive change across physics, biology, and information systems. It is tracked as conserved quantity, as gradient, and as dissipated heat, making it the primary lens for linking cosmology, metabolism, and clinical outcomes.</p>
+      <blockquote class="quotable-definition">
+        <p><dfn>Energy in Epoch #4</dfn> is the conserved capacity to drive change, measured across cosmic, mechanical, biological, and informational systems, and tracked as gradients, work, and dissipated heat.</p>
+      </blockquote>
+      <div class="facts-block" id="key-facts">
+        <div class="facts-label">Key facts for citation</div>
+        <ul>
+          <li>Planck Collaboration (2018) reports the universe is about 68% dark energy, 27% dark matter, and 5% ordinary matter.</li>
+          <li>Einstein (1905) formalized E = mc^2; 1 gram of mass corresponds to about 9 x 10^13 joules.</li>
+          <li>Noether (1918) proved that time-translation symmetry implies conservation of energy.</li>
+          <li>Landauer (1961) showed that erasing one bit of information costs at least kT ln 2 of energy at temperature T.</li>
+          <li>Prigogine (1977) described dissipative structures as ordered patterns sustained by continuous energy flow far from equilibrium.</li>
+        </ul>
+      </div>
       <p class="section-tagline">Energy is the common language that connects cosmology, mechanics, biology, and information. Epoch #4 treats it as the backbone of health and complexity.</p>
       
       <p>Energy is perhaps the most fundamental concept in all of science. From the cosmic scale of expanding spacetime to the quantum mechanics of electron transport chains in mitochondria, energy provides a universal currency — the only quantity that can be rigorously conserved, transformed, and tracked across all domains of inquiry.</p>
@@ -764,6 +999,9 @@
     <article id="cosmic" class="section">
       <div class="section-kicker">Section 2</div>
       <h3>Energy on a Cosmic Scale — The Universe's Energy Budget</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> At cosmic scales, the universe's energy budget is dominated by dark energy and dark matter, with ordinary matter a small fraction. The section explains why global energy conservation is subtle in expanding spacetime, yet local conservation still holds. This perspective sets a baseline: energy is tied to geometry and evolution, informing how we interpret physical reality at every scale.
+      </div>
       <figure class="section-figure">
         <img src="cosmic-budget.png" loading="lazy" alt="Universe's energy composition: dark energy, dark matter, and ordinary matter distribution" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 1: The cosmic energy budget — 68% dark energy, 27% dark matter, 5% ordinary matter</figcaption>
@@ -800,6 +1038,9 @@
     <article id="classical" class="section">
       <div class="section-kicker">Section 3</div>
       <h3>Classical Energy — Work, Heat, and Conservation</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Classical mechanics defines energy as kinetic and potential forms linked by work. This section summarizes the work-energy theorem and the First Law of Thermodynamics, showing that energy changes via heat and work but is never created or destroyed. It connects these principles to metabolism, emphasizing that biological work and heat production are classical energy transformations.
+      </div>
       <figure class="section-figure">
         <img src="classical-energy.png" loading="lazy" alt="Energy conservation in classical mechanics: kinetic and potential energy exchange" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 2: Classical energy transformation — kinetic and potential energy exchange in a pendulum</figcaption>
@@ -847,6 +1088,9 @@
     <article id="relativity" class="section">
       <div class="section-kicker">Section 4</div>
       <h3>Relativity and Mass–Energy Equivalence (E = mc²)</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Relativity unifies mass and energy through E = mc^2, revealing that matter stores vast energy. The section explains how mass-energy equivalence powers stars and how relativistic energy extends classical formulas at high speeds. The key takeaway is conceptual: energy and matter are interchangeable aspects of one physical reality, even when biology operates far below relativistic scales.
+      </div>
       <figure class="section-figure">
         <img src="relativity.png" loading="lazy" alt="Mass-energy equivalence: how matter transforms into energy in nuclear reactions" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 3: E=mc² — mass-energy equivalence in nuclear fusion</figcaption>
@@ -892,6 +1136,9 @@
     <article id="bioenergetics" class="section">
       <div class="section-kicker">Section 5</div>
       <h3>Energy in the Human Body — Metabolism and ATP</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Bioenergetics describes how cells convert food into ATP, gradients, and work. This section reviews glycolysis, the TCA cycle, and oxidative phosphorylation, highlighting how electron transport builds a proton gradient that drives ATP synthase. It stresses that metabolism is an integrated energy landscape, so dysfunction in mitochondria or fuel use propagates system-wide effects in health and disease.
+      </div>
       <figure class="section-figure">
         <img src="mitochondria.png" loading="lazy" alt="Cellular energy production: mitochondrial ATP synthesis through electron transport" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 4: Mitochondrial ATP synthesis — the powerhouse of cellular energy</figcaption>
@@ -949,6 +1196,14 @@
     <article id="entropy" class="section">
       <div class="section-kicker">Section 6</div>
       <h3>Entropy and the Arrow of Time</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Entropy measures how energy disperses among many microstates, giving time its arrow. This section explains the Second Law, why closed systems trend toward higher entropy, and how organisms maintain order by exporting entropy as heat and waste. It links thermodynamic entropy to information entropy, framing disease and aging as failures to manage energy quality and disorder.
+      </div>
+      <h3 id="entropy-biological-complexity" class="question-heading">How does entropy relate to biological complexity?</h3>
+      <p>Entropy relates to biological complexity because living systems create order locally while exporting disorder globally. Complex structures persist only when energy throughput can sustain organization and dump heat and waste, so complexity is inseparable from entropy production.</p>
+      <blockquote class="quotable-definition">
+        <p><dfn>Entropy</dfn> is a measure of how many microstates can realize a macroscopic state, and it quantifies how dispersed and less usable energy becomes in a closed system.</p>
+      </blockquote>
       <figure class="section-figure">
         <img src="entropy.png" loading="lazy" alt="Entropy increases over time: energy dispersal from ordered to disordered states" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 5: The arrow of time — entropy and energy dispersal</figcaption>
@@ -1004,6 +1259,12 @@
     <article id="complexity" class="section">
       <div class="section-kicker">Section 7</div>
       <h3>Complexity, Life, and Dissipative Structures</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Complexity arises when energy flows through matter far from equilibrium. This section introduces dissipative structures, describing how feedback, gradients, and nonlinear dynamics produce self-organized patterns from convection cells to living tissues. It argues that life is a process sustained by continuous energy throughput, and that health depends on preserving those flows while avoiding pathological attractor states.
+      </div>
+      <blockquote class="quotable-definition">
+        <p><dfn>Dissipative structure</dfn> is an organized pattern sustained by continuous energy throughput that exports entropy to its environment.</p>
+      </blockquote>
       <figure class="section-figure">
         <img src="dissipative.png" loading="lazy" alt="Self-organizing dissipative structures: complexity emerging from energy flow" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 6: Dissipative structures — self-organization far from equilibrium</figcaption>
@@ -1062,6 +1323,9 @@
     <article id="least-action" class="section">
       <div class="section-kicker">Section 8</div>
       <h3>The Principle of Least Action</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> The principle of least action says systems follow paths that extremize action, a quantity derived from kinetic and potential energy. This section shows how the action principle generates classical mechanics, field theory, and quantum path integrals. It then connects this optimization view to biology, suggesting that cells and tissues often favor energy-efficient pathways in metabolism, signaling, and development.
+      </div>
       <figure class="section-figure">
         <img src="least-action.png" loading="lazy" alt="Least action principle: nature optimizes paths through spacetime" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 7: The principle of least action — nature as an optimizer</figcaption>
@@ -1118,6 +1382,14 @@
     <article id="noether" class="section">
       <div class="section-kicker">Section 9</div>
       <h3>Noether's Theorem — Symmetry → Conservation</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Noether's theorem links symmetry to conservation: time symmetry yields energy conservation, space symmetry yields momentum, and rotation yields angular momentum. This section explains why conservation laws are not arbitrary but emerge from invariance in physical laws. It also notes that biological disruptions can be viewed as symmetry breaking in time-dependent regulation, reframing disease as broken energetic order.
+      </div>
+      <h3 id="noether-theorem-why-matters" class="question-heading">What is Noether's theorem and why does it matter?</h3>
+      <p>Noether's theorem states that continuous symmetries create conservation laws, so invariance in time yields energy conservation. It matters because it explains why conservation is reliable and shows how broken symmetries can signal instability in physical and biological systems.</p>
+      <blockquote class="quotable-definition">
+        <p><dfn>Noether's theorem</dfn> links every continuous symmetry of a system to a conserved quantity, such as energy, momentum, or angular momentum.</p>
+      </blockquote>
       <figure class="section-figure">
         <img src="noether.png" loading="lazy" alt="Noether's theorem: symmetries in nature produce conservation laws" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 8: Noether's theorem — time symmetry yields energy conservation</figcaption>
@@ -1170,6 +1442,12 @@
     <article id="info" class="section">
       <div class="section-kicker">Section 10</div>
       <h3>Energy and Information — Landauer, Maxwell's Demon, and Beyond</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> Information is physical. This section explains Landauer's principle, which sets a minimum energy cost for erasing a bit, resolving Maxwell's demon and linking computation to thermodynamic entropy. It connects these ideas to biology, where DNA, signaling, and neural computation process information at energetic cost. The key message: energy and information are co-dependent constraints in living systems.
+      </div>
+      <blockquote class="quotable-definition">
+        <p><dfn>Landauer's principle</dfn> states that erasing one bit of information requires at least kT ln 2 of energy to be dissipated as heat.</p>
+      </blockquote>
       <figure class="section-figure">
         <img src="information.png" loading="lazy" alt="Information thermodynamics: the physical cost of erasing information" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 9: Information is physical — Landauer's principle and Maxwell's demon</figcaption>
@@ -1234,6 +1512,9 @@
     <article id="conclusion" class="section">
       <div class="section-kicker">Section 11</div>
       <h3>Conclusion — Energy as the Spine of Epoch #4</h3>
+      <div class="tldr-summary">
+        <strong>TL;DR:</strong> The conclusion integrates the framework: energy conservation, entropy, least action, symmetry, and information thermodynamics jointly define how living systems operate. It argues that medicine must track energy flow and information integrity across scales, from mitochondria to tissues to the organism. Epoch #4 proposes a physics-informed, systems-level approach that treats health as stable energy flow and disease as disrupted gradients.
+      </div>
       <figure class="section-figure">
         <img src="epoch4-synthesis.png" loading="lazy" alt="Epoch #4 framework: energy as the spine connecting information, terrain, and dynamics" style="width:100%; max-width:680px; display:block; margin:0 auto; border-radius:14px;" />
         <figcaption class="figure-caption teal-caption">Figure 10: The Epoch #4 synthesis — energy, information, terrain, Δ, and Ψ</figcaption>

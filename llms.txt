@@ -1,0 +1,18 @@
+# Epoch #4 Energy Framework
+
+A scholarly white paper exploring energy from cosmic to biological scales
+
+Author: S. Thaddeus Connelly, DDS, MD, PhD, FACS
+
+## Sections
+- [Introduction](https://epoch4-energy.com/#introduction): Overview of energy as the unifying concept across cosmology, physics, biology, and information.
+- [Cosmic Scale](https://epoch4-energy.com/#cosmic): Explains the universe's energy budget and the role of dark energy and dark matter.
+- [Classical Mechanics](https://epoch4-energy.com/#classical): Defines kinetic and potential energy, work, and the First Law of Thermodynamics.
+- [Relativity](https://epoch4-energy.com/#relativity): Explores mass-energy equivalence and relativistic energy relations.
+- [Bioenergetics](https://epoch4-energy.com/#bioenergetics): Describes ATP production, mitochondrial gradients, and metabolic work.
+- [Entropy](https://epoch4-energy.com/#entropy): Explains the Second Law, entropy growth, and energy quality.
+- [Complexity](https://epoch4-energy.com/#complexity): Introduces dissipative structures and self-organization in living systems.
+- [Least Action](https://epoch4-energy.com/#least-action): Shows how action principles generate physical laws and biological optimization.
+- [Noether's Theorem](https://epoch4-energy.com/#noether): Connects symmetry to conservation laws and energetic stability.
+- [Information Thermodynamics](https://epoch4-energy.com/#info): Details Landauer's principle and the physics of information.
+- [Conclusion](https://epoch4-energy.com/#conclusion): Synthesizes energy, entropy, symmetry, and information for Epoch #4.
