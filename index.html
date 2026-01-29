@@ -888,6 +888,7 @@
     .section-figure.animated img,
     .section-figure.animated svg {
       will-change: transform;
+      animation: none;
     }
 
     .figure-animate {
@@ -1869,6 +1870,9 @@
     const hero = document.querySelector('.hero');
     const heroParticles = document.getElementById('hero-particles');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasGSAP = typeof window.gsap !== 'undefined';
+    console.log('[gsap] loaded:', hasGSAP);
+    console.log('[figures] IntersectionObserver available:', 'IntersectionObserver' in window);
 
     const updateProgress = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -2108,63 +2112,90 @@
       }
     }
 
-    const floatingFigures = document.querySelectorAll('.figure-img');
+    const floatingFigures = document.querySelectorAll('.section-figure img, .section-figure svg');
+    console.log('[figures] floating targets:', floatingFigures.length);
     const startFloatingFigure = (element) => {
-      if (!window.gsap || element.dataset.floatAnimated === 'true') {
+      if (!hasGSAP || element.dataset.floatAnimated === 'true') {
+        return;
+      }
+      const parentFigure = element.closest('.section-figure');
+      if (parentFigure && parentFigure.matches('#figure-pendulum, #figure-cosmic, #figure-mitochondria')) {
+        console.log('[figures] skipping float for custom animation', parentFigure.id);
         return;
       }
       element.dataset.floatAnimated = 'true';
-      element.classList.add('animated');
-      gsap.to(element, {
-        y: -8,
-        duration: 3.6,
-        ease: 'sine.inOut',
-        yoyo: true,
-        repeat: -1
-      });
+      if (parentFigure) {
+        parentFigure.classList.add('animated');
+      }
+      console.log('[figures] start floating', element);
+      gsap.fromTo(
+        element,
+        { y: -15 },
+        {
+          y: 15,
+          duration: 3,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          overwrite: 'auto'
+        }
+      );
     };
 
-    if (!prefersReducedMotion && floatingFigures.length > 0 && window.gsap) {
-      if ('IntersectionObserver' in window) {
-        const floatObserver = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                startFloatingFigure(entry.target);
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.3, rootMargin: '0px 0px -12% 0px' }
-        );
+    if (!prefersReducedMotion && floatingFigures.length > 0) {
+      if (hasGSAP) {
+        if ('IntersectionObserver' in window) {
+          const floatObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  console.log('[figures] float in view', entry.target);
+                  startFloatingFigure(entry.target);
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.3, rootMargin: '0px 0px -12% 0px' }
+          );
 
-        floatingFigures.forEach((element) => floatObserver.observe(element));
+          floatingFigures.forEach((element) => floatObserver.observe(element));
+        } else {
+          floatingFigures.forEach(startFloatingFigure);
+        }
       } else {
-        floatingFigures.forEach(startFloatingFigure);
+        console.log('[figures] GSAP missing, using CSS float fallback.');
       }
     }
 
     const figureAnimationEntries = [];
     const registerFigureAnimation = (selector, startAnimation) => {
       const element = document.querySelector(selector);
-      if (element) {
-        figureAnimationEntries.push({ element, startAnimation, hasStarted: false });
+      if (!element) {
+        console.log('[figures] animation target missing', selector);
+        return;
       }
+      console.log('[figures] register animation', selector);
+      figureAnimationEntries.push({ element, startAnimation, hasStarted: false });
     };
 
     registerFigureAnimation('#figure-pendulum', (element) => {
       const pendulumTarget = element.querySelector('img, svg');
-      if (!pendulumTarget || !window.gsap) {
+      if (!pendulumTarget || !hasGSAP) {
         return;
       }
-      gsap.set(pendulumTarget, { transformOrigin: '50% 0%', rotation: -10 });
-      const pendulumTimeline = gsap.timeline({ repeat: -1, yoyo: true });
-      pendulumTimeline.to(pendulumTarget, { rotation: 10, duration: 2.4, ease: 'sine.inOut' });
+      gsap.set(pendulumTarget, { transformOrigin: '50% 0%', rotation: -25 });
+      gsap.to(pendulumTarget, {
+        rotation: 25,
+        duration: 1.8,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1
+      });
     });
 
     registerFigureAnimation('#figure-mitochondria', (element) => {
       const svg = element.querySelector('svg');
-      if (!svg || !window.gsap) {
+      if (!svg || !hasGSAP) {
         return;
       }
 
@@ -2211,7 +2242,7 @@
 
     registerFigureAnimation('#figure-cosmic', (element) => {
       const cosmicTarget = element.querySelector('img, svg');
-      if (!cosmicTarget || !window.gsap) {
+      if (!cosmicTarget || !hasGSAP) {
         return;
       }
       gsap.set(cosmicTarget, { transformOrigin: '50% 50%' });
@@ -2230,29 +2261,36 @@
       }
       entry.hasStarted = true;
       entry.element.classList.add('animated');
+      console.log('[figures] start animation', entry.element.id || entry.element);
       entry.startAnimation(entry.element);
     };
 
-    if (!prefersReducedMotion && figureAnimationEntries.length > 0 && window.gsap) {
-      if ('IntersectionObserver' in window) {
-        const figureObserver = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const match = figureAnimationEntries.find((item) => item.element === entry.target);
-                if (match) {
-                  startFigureAnimation(match);
+    console.log('[figures] registered figure animations:', figureAnimationEntries.length);
+    if (!prefersReducedMotion && figureAnimationEntries.length > 0) {
+      if (hasGSAP) {
+        if ('IntersectionObserver' in window) {
+          const figureObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  console.log('[figures] figure in view', entry.target);
+                  const match = figureAnimationEntries.find((item) => item.element === entry.target);
+                  if (match) {
+                    startFigureAnimation(match);
+                  }
+                  observer.unobserve(entry.target);
                 }
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.3, rootMargin: '0px 0px -12% 0px' }
-        );
+              });
+            },
+            { threshold: 0.3, rootMargin: '0px 0px -12% 0px' }
+          );
 
-        figureAnimationEntries.forEach((entry) => figureObserver.observe(entry.element));
+          figureAnimationEntries.forEach((entry) => figureObserver.observe(entry.element));
+        } else {
+          figureAnimationEntries.forEach(startFigureAnimation);
+        }
       } else {
-        figureAnimationEntries.forEach(startFigureAnimation);
+        console.log('[figures] GSAP missing, skipping JS figure animations.');
       }
     }
   </script>
