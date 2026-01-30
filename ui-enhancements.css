@@ -1,0 +1,287 @@
+/* ==========================================================================
+   UI Enhancements - Inspired by antigravity.google
+   Floating particles, scroll animations, parallax effects
+   ========================================================================== */
+
+/* Floating Particles Animation */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 20s infinite ease-in-out;
+}
+
+.particle:nth-child(odd) {
+    background: var(--color-accent-dim);
+    animation-duration: 25s;
+}
+
+.particle:nth-child(3n) {
+    width: 6px;
+    height: 6px;
+    opacity: 0.2;
+    animation-duration: 30s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    25% {
+        transform: translateY(-100px) translateX(50px) rotate(90deg);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-200px) translateX(-30px) rotate(180deg);
+        opacity: 0.2;
+    }
+    75% {
+        transform: translateY(-150px) translateX(80px) rotate(270deg);
+        opacity: 0.4;
+    }
+}
+
+/* Enhanced Scroll-Triggered Animations */
+.reveal-enhanced {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-enhanced.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered Animation Delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+
+/* Parallax Effects */
+.parallax-container {
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+.parallax-layer {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+.parallax-slow {
+    transform: translateZ(-100px) scale(1.1);
+}
+
+.parallax-fast {
+    transform: translateZ(50px) scale(0.95);
+}
+
+/* Enhanced Typography - Typing Effect */
+.typing-effect {
+    overflow: hidden;
+    border-right: 3px solid var(--color-accent);
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--color-accent); }
+}
+
+/* Gradient Text Animation */
+.gradient-text-animated {
+    background: linear-gradient(
+        90deg,
+        var(--color-accent) 0%,
+        var(--color-accent-hover) 25%,
+        #38b2ac 50%,
+        var(--color-accent-hover) 75%,
+        var(--color-accent) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* Enhanced Card Hover Effects */
+.card-enhanced {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+}
+
+.card-enhanced:hover {
+    transform: translateY(-8px) rotateX(2deg);
+    box-shadow: 
+        0 20px 40px rgba(79, 209, 197, 0.15),
+        0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Magnetic Button Effect */
+.btn-magnetic {
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-magnetic::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle, var(--color-accent-dim) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.btn-magnetic:hover::before {
+    opacity: 1;
+}
+
+.btn-magnetic:hover {
+    transform: scale(1.05);
+}
+
+/* Glow Effects */
+.glow-accent {
+    box-shadow: 0 0 20px var(--color-accent-dim),
+                0 0 40px rgba(79, 209, 197, 0.1);
+}
+
+.glow-accent-hover:hover {
+    box-shadow: 0 0 30px var(--color-accent-dim),
+                0 0 60px rgba(79, 209, 197, 0.2);
+}
+
+/* Smooth Section Transitions */
+.section-transition {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-transition::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(
+        to bottom,
+        var(--color-bg-dark) 0%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+.section-transition::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(
+        to top,
+        var(--color-bg-dark) 0%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Hero Enhancements */
+.hero-enhanced {
+    position: relative;
+}
+
+.hero-enhanced .hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Split Text Animation */
+.split-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px) rotateX(-90deg);
+    animation: split-reveal 0.8s forwards;
+}
+
+@keyframes split-reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (prefers-reduced-motion: reduce) {
+    .reveal-enhanced,
+    .reveal-left,
+    .reveal-right,
+    .typing-effect,
+    .gradient-text-animated,
+    .split-text span {
+        animation: none;
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .particle {
+        animation: none;
+    }
+}
