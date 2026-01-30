@@ -25,6 +25,36 @@ FIGURES = [
         "image": "mitochondria.png",
         "prompt": "mitochondrial ATP synthesis with gentle motion",
     },
+        {
+        "name": "relativity",
+        "image": "relativity.png",
+        "prompt": "mass transforming into radiant energy, E=mc2 visualization with glowing particles",
+    },
+    {
+        "name": "entropy",
+        "image": "entropy.png",
+        "prompt": "particles dispersing from ordered to disordered state, entropy increasing",
+    },
+    {
+        "name": "dissipative",
+        "image": "dissipative.png",
+        "prompt": "self-organizing convection cells, dissipative structure forming patterns",
+    },
+    {
+        "name": "information",
+        "image": "information.png",
+        "prompt": "Maxwell demon sorting particles, information processing visualization",
+    },
+    {
+        "name": "noether",
+        "image": "noether.png",
+        "prompt": "symmetry transformation with conservation law visualization, rotating and translating",
+    },
+    {
+        "name": "least-action",
+        "image": "least-action.png",
+        "prompt": "particle following optimal path through spacetime, trajectory optimization",
+    },
 ]
 
 ROOT_DIR = Path(__file__).resolve().parent
