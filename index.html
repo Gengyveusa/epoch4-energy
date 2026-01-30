@@ -2594,26 +2594,90 @@
     }
   };
 
-  const createPDF = (downloadLink, originalText) => {
-    const element = document.querySelector('.main');
+      const createPDF = (downloadLink, originalText) => {
+    // Clone the main content and apply PDF-friendly styles
+    const mainContent = document.querySelector('.main');
+    if (!mainContent) {
+      console.error('Main content not found');
+      downloadLink.textContent = originalText;
+      downloadLink.style.pointerEvents = 'auto';
+      return;
+    }
+    
+    // Create a wrapper with light theme for PDF
+    const pdfContainer = document.createElement('div');
+    pdfContainer.style.cssText = `
+      background: #ffffff;
+      color: #1a202c;
+      padding: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto;
+    `;
+    
+    // Add title
+    const title = document.createElement('h1');
+    title.textContent = 'The Nature of Energy in Epoch #4';
+    title.style.cssText = 'color: #1a202c; font-size: 28px; margin-bottom: 10px; border-bottom: 2px solid #4fd1c5; padding-bottom: 10px;';
+    pdfContainer.appendChild(title);
+    
+    // Add author
+    const author = document.createElement('p');
+    author.textContent = 'S. Thaddeus Connelly, DDS, MD, PhD, FACS';
+    author.style.cssText = 'color: #4a5568; font-style: italic; margin-bottom: 30px;';
+    pdfContainer.appendChild(author);
+    
+    // Extract and add text content from sections
+    const sections = mainContent.querySelectorAll('.section');
+    sections.forEach((section) => {
+      const sectionDiv = document.createElement('div');
+      sectionDiv.style.cssText = 'margin-bottom: 30px; page-break-inside: avoid;';
+      
+      const heading = section.querySelector('h3');
+      if (heading) {
+        const h = document.createElement('h2');
+        h.textContent = heading.textContent;
+        h.style.cssText = 'color: #2d3748; font-size: 20px; margin-bottom: 15px; border-left: 4px solid #4fd1c5; padding-left: 12px;';
+        sectionDiv.appendChild(h);
+      }
+      
+      const paragraphs = section.querySelectorAll('p, .tldr-summary, blockquote');
+      paragraphs.forEach((p) => {
+        const para = document.createElement('p');
+        para.textContent = p.textContent;
+        para.style.cssText = 'color: #2d3748; margin-bottom: 12px; text-align: justify;';
+        sectionDiv.appendChild(para);
+      });
+      
+      pdfContainer.appendChild(sectionDiv);
+    });
+    
+    // Add to document temporarily
+    document.body.appendChild(pdfContainer);
+    
     const opt = {
-      margin: [10, 10, 10, 10],
+      margin: [15, 15, 15, 15],
       filename: 'Epoch4-Energy-White-Paper.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true, logging: false },
+      html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
     
-    html2pdf().set(opt).from(element).save().then(() => {
+    html2pdf().set(opt).from(pdfContainer).save().then(() => {
+      document.body.removeChild(pdfContainer);
       downloadLink.textContent = originalText;
       downloadLink.style.pointerEvents = 'auto';
     }).catch((error) => {
       console.error('PDF generation failed:', error);
+      document.body.removeChild(pdfContainer);
       downloadLink.textContent = originalText;
       downloadLink.style.pointerEvents = 'auto';
       alert('PDF generation failed. Please try again.');
     });
+  };
+
   };
   </script>
 </body>
